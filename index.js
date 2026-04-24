@@ -41,10 +41,9 @@ app.post('/generate-music', async (req, res) => {
         }
       }
     );
-
-    res.json({
+ res.json({
       status: 'complete',
-      audio_url: output,
+      audio_url: output[0] || output,
       prompt,
       tier: tier || 'LITE'
     });
