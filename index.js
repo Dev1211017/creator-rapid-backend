@@ -27,7 +27,16 @@ app.post('/generate-music', async (req, res) => {
   try {
     const input = {
       prompt: prompt,
-      model_version: "stereo-large",
+      model_version: mic_audio_url ? "stereo-melody-large" : "stereo-large",
+      output_format: "mp3",
+      normalization_strategy: "peak",
+      duration: duration || 8,
+    };
+
+    if (mic_audio_url) {
+      input.input_audio = mic_audio_url;
+      input.continuation = false;
+    }
       output_format: "mp3",
       normalization_strategy: "peak",
       duration: duration || 8,
