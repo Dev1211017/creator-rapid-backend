@@ -37,15 +37,6 @@ app.post('/generate-music', async (req, res) => {
       input.input_audio = mic_audio_url;
       input.continuation = false;
     }
-      output_format: "mp3",
-      normalization_strategy: "peak",
-      duration: duration || 8,
-    };
-
-    if (mic_audio_url) {
-      input.input_audio = mic_audio_url;
-      input.continuation = false;
-    }
 
     const prediction = await replicate.predictions.create({
       version: "671ac645ce5e552cc63a54a2bbff63fcf798043055d2dac5fc9e36a837eedcfb",
