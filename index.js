@@ -36,6 +36,7 @@ app.post('/generate-music', async (req, res) => {
     if (mic_audio_url) {
       input.input_audio = mic_audio_url;
       input.continuation = false;
+      input.melody_balance = 0.7; // 0.0 = ignore mic, 1.0 = fully mic-driven. 0.7 is strong but still prompt-guided.
     }
 
     const prediction = await replicate.predictions.create({
